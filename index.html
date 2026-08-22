@@ -2,11 +2,12 @@
 <html lang="en">
 
 <head>
-    <meta charset ="UTF-8">
-    <meta name ="viewport" content ="width =device- width , initial-scale =1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>StudentHub</title>
-    <link rel ="stylesheet"href="style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <header class="top-header">
         <div class="logo">
@@ -18,36 +19,39 @@
             <span>👤 Student</span>
         </div>
     </header>
-    <nav>
-        <ul>
-            <li><a href ="#"class="nav-link"> Dashboard</a></li>
-            <li><a href ="#"class="nav-link"> Tasks</a></li>
-            <li><a href ="#"class="nav-link"> courses</a></li>
-            <li><a href ="#"class="nav-link"> Attendence</a></li>
-            <li><a href ="#"class="nav-link"> Notes</a></li>
-            <li><a href ="#"class="nav-link"> Analytics</a></li>
-            <li><a href ="#"class="nav-link"> Calendar</a></li>
-        </ul>
-    </nav>
-    <main class ="dashboard">
-        <section class ="welcome-section">
-            <h2> welcome back!</h2>
-            <p>What's happening with your studies today</p>
-        </section>
-        <section class="stats-section">
-        <div class ="stat-card">
-            <h3>Tasks</h3>
-            <p>5</p>
-        </div>
-        <div class ="stat-card">
-            <h3>Courses</h3>
-            <p>4</p>
-        </div>
-        <div class ="stat-card">
-            <h3>Attendence</h3>
-            <p>85%</p>
-        </div>
-        </section>
-    </main>
+    <div class="app-layout">
+        <nav class="sidebar">
+            <ul>
+                <li><a href="#" class="nav-link active"> Dashboard</a></li>
+                <li><a href="#" class="nav-link"> Tasks</a></li>
+                <li><a href="#" class="nav-link"> courses</a></li>
+                <li><a href="#" class="nav-link"> Attendence</a></li>
+                <li><a href="#" class="nav-link"> Notes</a></li>
+                <li><a href="#" class="nav-link"> Analytics</a></li>
+                <li><a href="#" class="nav-link"> Calendar</a></li>
+            </ul>
+        </nav>
+        <main class="dashboard">
+            <section class="welcome-section">
+                <h2> welcome back!</h2>
+                <p>What's happening with your studies today</p>
+            </section>
+            <section class="stats-section">
+                <div class="stat-card">
+                    <h3>Tasks</h3>
+                    <p>5</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Courses</h3>
+                    <p>4</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Attendance</h3>
+                    <p>85%</p>
+                </div>
+            </section>
+        </main>
+    </div>
 </body>
+
 </html>
