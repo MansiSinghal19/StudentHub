@@ -22,17 +22,74 @@ function addDeleteButton(taskItem) {
 
     });
 }
+//Function:add edit button to a task 
+
+function addEditButton(taskItem){
+
+    //create the edit button
+    const editButton = document.createElement("button");
+
+    //set the text displayed on the button
+    editButton.textContent ="Edit";
+
+    //Add the Edit button to the task
+    taskItem.appendChild(editButton);
+
+    //run this code when the edit button is clicked 
+    editButton.addEventListener("click",function(){
+        
+        //find the task title inside this task
+        const taskTitle = taskItem.querySelector(".task-info h3 ");
+
+        //ask the user for the new task name
+
+        const newTaskName = prompt(
+            "Edit your task:",
+            taskTitle.textContent
+        );
+        // stop if the user cancels or enters nothing
+        if(newTaskName === null || newTaskName.trim() === ""){
+            return ;
+        }
+
+        //update the task title 
+
+        taskTitle.textContent = newTaskName;
+    });
+}
 
 
-// Add Delete button to existing tasks
+// Add Delete  and Edit button to existing tasks
 const existingTasks = document.querySelectorAll(".task-item");
 
 existingTasks.forEach(function (taskItem) {
 
     addDeleteButton(taskItem);
 
+    //Add Edit functionality to this existing task
+
+    addEditButton(taskItem);
+
 });
 
+// Checkbox functionality for existing tasks
+existingTasks.forEach(function (taskItem) {
+
+    const checkbox = taskItem.querySelector('input[type="checkbox"]');
+    const taskDue = taskItem.querySelector(".task-info p");
+
+    checkbox.addEventListener("change", function () {
+
+        if (checkbox.checked) {
+            taskItem.classList.add("completed");
+            taskDue.textContent = "Completed";
+
+        } else {
+            taskItem.classList.remove("completed");
+            taskDue.textContent = "Due Today";
+        }
+    });
+});
 
 console.log(addTaskButton);
 console.log(taskList);
@@ -91,6 +148,9 @@ addTaskButton.addEventListener("click", function () {
 
     // Add Delete button to the new task
     addDeleteButton(newTask);
+
+    // Add Edit functionality to the new task
+    addEditButton(newTask);
 
 
     // Checkbox functionality
