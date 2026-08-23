@@ -1,64 +1,120 @@
 console.log("StudentHub JavaScript is connected!");
 
-const addTaskButton =document.querySelector("button");
-const taskList =document.querySelector(".task-list");
+const addTaskButton = document.querySelector("button");
+const taskList = document.querySelector(".task-list");
 const taskCount = document.querySelector(".task-count");
+
+
+// FUNCTION: Add Delete button to a task
+function addDeleteButton(taskItem) {
+
+    const deleteButton = document.createElement("button");
+
+    deleteButton.textContent = "Delete";
+
+    taskItem.appendChild(deleteButton);
+
+    deleteButton.addEventListener("click", function () {
+
+        taskItem.remove();
+
+        taskCount.textContent = taskList.children.length;
+
+    });
+}
+
+
+// Add Delete button to existing tasks
+const existingTasks = document.querySelectorAll(".task-item");
+
+existingTasks.forEach(function (taskItem) {
+
+    addDeleteButton(taskItem);
+
+});
+
 
 console.log(addTaskButton);
 console.log(taskList);
 console.log(taskCount);
 
-addTaskButton.addEventListener("click",function(){
+
+// ADD TASK
+addTaskButton.addEventListener("click", function () {
+
     console.log("Add task button was clicked!");
 
-    const taskName =prompt("Enter your task:");
-    console.log("Task entered:",taskName);
+    const taskName = prompt("Enter your task:");
 
-    if(taskName===null|| taskName.trim()===""){
+    console.log("Task entered:", taskName);
+
+
+    if (taskName === null || taskName.trim() === "") {
         return;
     }
-    
+
+    // Create new task
     const newTask = document.createElement("div");
-  newTask.classList.add("task-item");
+    newTask.classList.add("task-item");
 
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
-  
-  const taskInfo = document.createElement("div");
-  taskInfo.classList.add("task-info");
+    // Create checkbox
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
 
-  const taskTitle =document.createElement("h3")
-  taskTitle.textContent = taskName;
+    // Create task information
+    const taskInfo = document.createElement("div");
+    taskInfo.classList.add("task-info");
 
-  const taskDue = document.createElement("p");
-  taskDue.textContent = "Due today";
+    // Create task title
+    const taskTitle = document.createElement("h3");
+    taskTitle.textContent = taskName;
 
-  taskInfo.appendChild(taskTitle);
-  taskInfo.appendChild(taskDue);
-  newTask.appendChild(checkbox);
-  newTask.appendChild(taskInfo);
-  taskList.appendChild(newTask);
 
-    console.log("New task added:",newTask)
+    // Create task due date
+    const taskDue = document.createElement("p");
+    taskDue.textContent = "Due Today";
 
-    taskCount.textContent = taskList.children.length;
-}); 
-const checkboxes=document.querySelectorAll('input[type="checkbox"]'); 
 
-checkboxes.forEach(function (checkbox){
+    // Put title and due date inside taskInfo
+    taskInfo.appendChild(taskTitle);
+    taskInfo.appendChild(taskDue);
 
-    checkbox.addEventListener("change",function(){
 
-    const taskItem = checkbox.parentElement;
-    const taskDue = taskItem.querySelector(".task-info p");
+    // Put checkbox and taskInfo inside newTask
+    newTask.appendChild(checkbox);
+    newTask.appendChild(taskInfo);
 
-        if(checkbox.checked){
 
-            taskItem.classList.add("completed");
+    // Add newTask to task list
+    taskList.appendChild(newTask);
+
+
+    // Add Delete button to the new task
+    addDeleteButton(newTask);
+
+
+    // Checkbox functionality
+    checkbox.addEventListener("change", function () {
+
+        if (checkbox.checked) {
+
+            newTask.classList.add("completed");
             taskDue.textContent = "Completed";
-        }else{
-            taskItem.classList.remove("completed");
+
+        } else {
+
+            newTask.classList.remove("completed");
             taskDue.textContent = "Due Today";
+
         }
-        });
+
     });
+
+
+    // Update task count
+    taskCount.textContent = taskList.children.length;
+
+
+    console.log("New task added:", newTask);
+
+});

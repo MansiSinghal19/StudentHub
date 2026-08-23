@@ -132,3 +132,15 @@ body{
 .task-item.completed{
     opacity:0.6;
 }
+.task-item{
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+    opacity: 1;
+}
+.task-item input[type="checkbox"]{
+    margin-top:4px
+}
+.task-item.completed{
+    opacity:0.6;
+}
