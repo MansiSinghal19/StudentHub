@@ -199,3 +199,18 @@ body{
 .task-item button{
     margin-left:5px;
 }
+/* task search box */
+.task-search{
+    margin-bottom:20px;
+}
+#task-search-input{
+    width:50%;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius:14px;
+    outline:none;
+}
+
+#task-search-input:focus{
+    border-color: #888;
+}

@@ -245,3 +245,32 @@ filterButtons.forEach(function(button){
 
     });
 });
+
+// TASK SEARCH 
+
+// select the search input
+const searchInput = document.querySelector("#task-search-input");
+
+//Run this code whenever the user types something
+searchInput.addEventListener("input",function(){
+
+    //Get what the user typed
+    const searchText = searchInput.value.toLowerCase();
+
+    //Get all tasks
+    const allTasks = document.querySelectorAll(".task-item");
+
+    //Check every task
+    allTasks.forEach(function(task){
+        //Get the task title
+        const taskTitle = task.querySelector(".task-info h3").textContent.toLowerCase();
+
+        // Check whether the task title contains the search text
+        if(taskTitle.includes(searchText)){
+
+            task.style.display = "flex";
+        } else{
+            task.style.display = "none";
+        }
+    });
+});
