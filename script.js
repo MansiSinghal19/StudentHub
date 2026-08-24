@@ -110,6 +110,18 @@ addTaskButton.addEventListener("click", function () {
         return;
     }
 
+    // Ask the user to select task priority 
+    const priority = prompt(
+        "Enter task priority:\nHigh\nMedium\nLow"
+    );
+
+    //Stop if user cancels or leaves priority empty
+    if(priority === null || priority.trim() === ""){
+        return ;
+    }
+
+    console.log("Task priority :",priority);
+
     // Create new task
     const newTask = document.createElement("div");
     newTask.classList.add("task-item");
@@ -131,10 +143,15 @@ addTaskButton.addEventListener("click", function () {
     const taskDue = document.createElement("p");
     taskDue.textContent = "Due Today";
 
+    //Create task priority
+    const taskPriority = document.createElement("p");
+   taskPriority.textContent = "Priority: "+ priority;
 
-    // Put title and due date inside taskInfo
+
+    // Put title and due date and priority inside taskInfo
     taskInfo.appendChild(taskTitle);
     taskInfo.appendChild(taskDue);
+    taskInfo.appendChild(taskPriority);
 
 
     // Put checkbox and taskInfo inside newTask
@@ -177,4 +194,54 @@ addTaskButton.addEventListener("click", function () {
 
     console.log("New task added:", newTask);
 
+});
+
+// task filtering
+
+//select all filters buttons
+const filterButtons = document.querySelectorAll(".filter-btn");
+
+//Add click event to each filter button
+filterButtons.forEach(function(button){
+
+    button.addEventListener("click", function(){
+
+        //get the selected filter
+        const selectedFilter = button.dataset.filter;
+
+        //get all tasks
+        const allTasks = document.querySelectorAll(".task-item");
+
+        //check every task 
+        allTasks.forEach(function(task){
+
+            if (selectedFilter === "all"){
+
+                task.style.display = "flex";
+            } else if (selectedFilter === "completed"){
+
+                if (task.classList.contains("completed")){
+                    task.style.display ="flex";
+                } else{
+                    task.style.display = "none";
+                }
+            } else if (selectedFilter === "pending"){
+
+                if(task.classList.contains("completed")){
+                    task.style.display ="none";
+                } else{
+                    task.style.display ="flex";
+                }
+            }
+        });
+
+        // Remove active class from all buttons
+        filterButtons.forEach(function(filterButton){
+            filterButton.classList.remove("active");
+        });
+
+        //Make clicked button active 
+        button.classList.add("active");
+
+    });
 });

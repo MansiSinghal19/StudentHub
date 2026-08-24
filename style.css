@@ -116,6 +116,7 @@ body{
     display: flex;
     flex-direction:column;
     gap:12px;
+    margin-top:20px;
 }
 .task-info h3{
     margin:0;
@@ -135,6 +136,66 @@ body{
 .task-item input[type="checkbox"]{
     margin-top:4px
 }
+/* completed task */
 .task-item.completed{
-    opacity:0.6;
+    background-color: #e8f5e9;
+    border-left:5px solid #2e7d32;
+}
+
+/* completed task text */
+.task-item.completed .task-info h3{
+   color: #2e7d32;
+}
+
+/* pending tasks */
+
+.task-item:not(.completed){
+    background-color:#ffebee;
+    border-left:5px solid #c62828;
+}
+/* Task priority styling */
+
+.task-info p:last-child{
+    font-weight: bold;
+}
+.task-info p:last-child{
+    color:#555;
+
+}
+/* Task filter buttons */
+.task-filters{
+    display: flex;
+    gap: 12px;
+    padding-bottom: 30px;
+    align-items:center;
+}
+.filter-btn{
+    padding: 8px 16px;
+    margin-right:4px;
+    border:1px solid #ddd;
+    border-radius:6px;
+    background-color:white;
+    cursor:pointer;
+}
+
+.filter-btn:hover{
+    background-color: #f1f1f1;
+}
+
+.filter-btn.active{
+    background-color:#333;
+    color:white;
+}
+/* spacing between task content and action buttons */
+.task-item {
+    display:flex;
+    align-items:flex-start;
+    gap:10px;
+}
+.task-item .task-info{
+    margin-right:10px;
+}
+
+.task-item button{
+    margin-left:5px;
 }

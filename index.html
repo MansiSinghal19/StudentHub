@@ -55,19 +55,27 @@
                     <h2>Today's Tasks</h2>
                     <button>Add Task</button>
                 </div>
+                <!-- Task filter buttons -->
+                <div class="task -filters">
+                    <button class ="filter-btn active" data-filter="all">All</button>
+                    <button class ="filter-btn" data-filter="pending">Pending</button>
+                    <button class ="filter-btn" data-filter="completed">Completed</button> 
+                </div>
                 <div class="task-list">
                     <div class="task-item">
                         <input type = "checkbox">
                         <div class="task-info">
                             <h3>Complete DBMS assignment</h3>
-                            <p>Due Today</p>
+                            <p>Due Tomorrow</p>
+                            <p>Priority: Medium</p>
                         </div>
                         </div>
                     <div class="task-item">
                         <input type = "checkbox">
                         <div class="task-info">
                             <h3>Practice DSA problems</h3>
-                            <p>Due Tomorrow</p>
+                            <p>Due Today</p>
+                            <p>Priority: high</p>
                         </div>
                        
                     </div>
@@ -76,6 +84,7 @@
                         <div class ="task-info">
                             <h3>Attend Web Development class</h3>
                             <p> Completed</p>
+                            <p>Priority:Low</p>
                         </div>
                     </div>
                 </div>
@@ -85,4 +94,4 @@
     <script src="script.js"></script>
 </body>
 
-</html>
+</html
