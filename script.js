@@ -1,9 +1,22 @@
 console.log("StudentHub JavaScript is connected!");
 
-const addTaskButton = document.querySelector("button");
+const addTaskButton = document.querySelector("#add-task-button");
 const taskList = document.querySelector(".task-list");
 const taskCount = document.querySelector(".task-count");
 
+// select elements from the add task modal
+
+const taskModal = document.querySelector("#task-modal");
+const taskForm = document.querySelector("#task-form");
+const taskNameInput = document.querySelector("#task-name-input");
+const taskPriorityInput = document.querySelector("#task-priority-input");
+const taskDateInput = document.querySelector("#task-date-input");
+const closeModalButton = document.querySelector("#close-modal-button");
+const cancelTaskButton = document.querySelector("#cancel-task-button")
+
+
+// // select the due the date input from html 
+//  const taskDateInput = document.querySelector("#task-date-input")
 
 // FUNCTION: Add Delete button to a task
 function addDeleteButton(taskItem) {
@@ -95,32 +108,39 @@ console.log(addTaskButton);
 console.log(taskList);
 console.log(taskCount);
 
+// OPEN ADD TASK MODAL
+addTaskButton.addEventListener("click",function(){
+    //show the modal
+    taskModal.style.display ="flex";
+});
 
-// ADD TASK
-addTaskButton.addEventListener("click", function () {
-
-    console.log("Add task button was clicked!");
-
-    const taskName = prompt("Enter your task:");
-
-    console.log("Task entered:", taskName);
+// CLOSE MODAL USING X BUTTON
+closeModalButton.addEventListener("click",function(){
+    //hide the modal
+    taskModal.style.display = "none";
+});
 
 
-    if (taskName === null || taskName.trim() === "") {
-        return;
-    }
+//CLOSE MODAL USING CANCEL BUTTON
+cancelTaskButton.addEventListener("click",function(){
+    //Hide modal
+    taskModal.style.display="none";
+});
 
-    // Ask the user to select task priority 
-    const priority = prompt(
-        "Enter task priority:\nHigh\nMedium\nLow"
-    );
+// HANDLE ADD TASK FORM SUBMISSION
+taskForm.addEventListener("submit", function (event) {
 
-    //Stop if user cancels or leaves priority empty
-    if(priority === null || priority.trim() === ""){
-        return ;
-    }
+    // Prevent the page from refreshing
+    event.preventDefault();
 
-    console.log("Task priority :",priority);
+    // Get values entered by the user
+    const taskName = taskNameInput.value.trim();
+    const priority = taskPriorityInput.value;
+    const dueDate = taskDateInput.value;
+
+    console.log("Task Name:", taskName);
+    console.log("Priority:", priority);
+    console.log("Due Date:", dueDate);
 
     // Create new task
     const newTask = document.createElement("div");
@@ -130,7 +150,7 @@ addTaskButton.addEventListener("click", function () {
     const checkbox = document.createElement("input");
     checkbox.type = "checkbox";
 
-    // Create task information
+    // Create task information container
     const taskInfo = document.createElement("div");
     taskInfo.classList.add("task-info");
 
@@ -138,37 +158,31 @@ addTaskButton.addEventListener("click", function () {
     const taskTitle = document.createElement("h3");
     taskTitle.textContent = taskName;
 
-
     // Create task due date
     const taskDue = document.createElement("p");
-    taskDue.textContent = "Due Today";
+    taskDue.textContent = "Due: " + dueDate;
 
-    //Create task priority
+    // Create task priority
     const taskPriority = document.createElement("p");
-   taskPriority.textContent = "Priority: "+ priority;
+    taskPriority.textContent = "Priority: " + priority;
 
-
-    // Put title and due date and priority inside taskInfo
+    // Add task details inside taskInfo
     taskInfo.appendChild(taskTitle);
     taskInfo.appendChild(taskDue);
     taskInfo.appendChild(taskPriority);
 
-
-    // Put checkbox and taskInfo inside newTask
+    // Add checkbox and task information to newTask
     newTask.appendChild(checkbox);
     newTask.appendChild(taskInfo);
 
-
-    // Add newTask to task list
+    // Add new task to task list
     taskList.appendChild(newTask);
 
-
-    // Add Delete button to the new task
+    // Add Delete functionality
     addDeleteButton(newTask);
 
-    // Add Edit functionality to the new task
+    // Add Edit functionality
     addEditButton(newTask);
-
 
     // Checkbox functionality
     checkbox.addEventListener("change", function () {
@@ -179,23 +193,22 @@ addTaskButton.addEventListener("click", function () {
             taskDue.textContent = "Completed";
 
         } else {
-
             newTask.classList.remove("completed");
-            taskDue.textContent = "Due Today";
+            taskDue.textContent = "Due: " + dueDate;
 
         }
-
     });
-
 
     // Update task count
     taskCount.textContent = taskList.children.length;
 
+    // Clear the form
+    taskForm.reset();
 
+    // Close the modal
+    taskModal.style.display = "none";
     console.log("New task added:", newTask);
-
 });
-
 // task filtering
 
 //select all filters buttons

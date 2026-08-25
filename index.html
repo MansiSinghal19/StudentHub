@@ -39,7 +39,7 @@
             <section class="stats-section">
                 <div class="stat-card">
                     <h3>Tasks</h3>
-                    <p class ="task-count">3</p>
+                    <p class="task-count">3</p>
                 </div>
                 <div class="stat-card">
                     <h3>Courses</h3>
@@ -53,42 +53,39 @@
             <section class="tasks-section">
                 <div class="section-header">
                     <h2>Today's Tasks</h2>
-                    <button>Add Task</button>
+                    <button id="add-task-button">Add Task</button>
                 </div>
                 <!-- Task filter buttons -->
                 <div class="task-filters">
-                    <button class ="filter-btn active" data-filter="all">All</button>
-                    <button class ="filter-btn" data-filter="pending">Pending</button>
-                    <button class ="filter-btn" data-filter="completed">Completed</button> 
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="pending">Pending</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
                 </div>
                 <!-- Task search box -->
-                 <div class ="task-search">
-                    <input
-                        type ="text"
-                        id = "task-search-input"
-                        placeholder = "Search tasks...">
-                 </div>
+                <div class="task-search">
+                    <input type="text" id="task-search-input" placeholder="Search tasks...">
+                </div>
                 <div class="task-list">
                     <div class="task-item">
-                        <input type = "checkbox">
+                        <input type="checkbox">
                         <div class="task-info">
                             <h3>Complete DBMS assignment</h3>
                             <p>Due Tomorrow</p>
                             <p>Priority: Medium</p>
                         </div>
-                        </div>
+                    </div>
                     <div class="task-item">
-                        <input type = "checkbox">
+                        <input type="checkbox">
                         <div class="task-info">
                             <h3>Practice DSA problems</h3>
                             <p>Due Today</p>
                             <p>Priority: high</p>
                         </div>
-                       
+
                     </div>
                     <div class="task-item completed">
-                        <input type = "checkbox" checked>
-                        <div class ="task-info">
+                        <input type="checkbox" checked>
+                        <div class="task-info">
                             <h3>Attend Web Development class</h3>
                             <p> Completed</p>
                             <p>Priority:Low</p>
@@ -98,6 +95,53 @@
             </section>
         </main>
     </div>
+    
+    <!-- Add task Modal -->
+    <div id="task-modal" class="task-modal">
+
+        <div class=" task-modal-content">
+
+            <!-- Modal heading -->
+            <div class="modal-header">
+                <h2>Add New Task</h2>
+                <button type=" button " id="close-modal-button">&times;</button>
+            </div>
+
+            <!-- Add task form -->
+            <form id="task-form">
+
+                <!-- task name -->
+                <label for="task-name-input">Task Name</label>
+                <input type="text" id="task-name-input" placeholder="Enter your task" required>
+
+                <!-- Task priority -->
+                <label for="task-priority-input">Priority</label>
+
+                <select id="task-priority-input" required>
+                    <option value="">Select priority</option>
+                    <option value="High">High</option>
+                    <option value="Medium">Medium</option>
+                    <option value="Low">Low</option>
+                </select>
+
+                <!-- Task Due Date -->
+                <label for="task-date-input">Due Date</label>
+
+                <input type="date" 
+                id="task-date-input" 
+                required
+                >
+
+                <!-- form buttons -->
+                <div class="modal-actions">
+
+                    <button type="button" id="cancel-task-button">Cancel</button>
+                    <button type="submit">Add Task</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  <!-- javascript should be load after html -->
     <script src="script.js"></script>
 </body>
 
