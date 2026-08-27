@@ -4,6 +4,25 @@ const addTaskButton = document.querySelector("#add-task-button");
 const taskList = document.querySelector(".task-list");
 const taskCount = document.querySelector(".task-count");
 
+
+// StudentHub task data
+let tasks = [
+    {
+        id: 1,
+        title: "DSA Practice",
+        priority: "Medium",
+        dueDate: "2026-08-28",
+        completed: true
+    },
+    {
+        id: 2,
+        title: "DBMS Assignment",
+        priority: "High",
+        dueDate: "2026-08-29",
+        completed: false
+    }
+];
+
 // select elements from the add task modal
 
 const taskModal = document.querySelector("#task-modal");
@@ -14,95 +33,107 @@ const taskDateInput = document.querySelector("#task-date-input");
 const closeModalButton = document.querySelector("#close-modal-button");
 const cancelTaskButton = document.querySelector("#cancel-task-button")
 
+//Display tasks from the tasks array
+function renderTasks(){
+    console.log("renderTasks function is running!");
 
-// // select the due the date input from html 
-//  const taskDateInput = document.querySelector("#task-date-input")
+    //clear existing tasks from the page
+    taskList.innerHTML = "";
 
-// FUNCTION: Add Delete button to a task
-function addDeleteButton(taskItem) {
+    //Go through every task 
+    tasks.forEach(function(task){
 
-    const deleteButton = document.createElement("button");
+        //create main task container
+        const taskItem = document.createElement("div");
+        taskItem.classList.add("task-item");
 
-    deleteButton.textContent = "Delete";
+        taskItem.dataset.id = task.id;
 
-    taskItem.appendChild(deleteButton);
-
-    deleteButton.addEventListener("click", function () {
-
-        taskItem.remove();
-
-        taskCount.textContent = taskList.children.length;
-
-    });
-}
-//Function:add edit button to a task 
-
-function addEditButton(taskItem){
-
-    //create the edit button
-    const editButton = document.createElement("button");
-
-    //set the text displayed on the button
-    editButton.textContent ="Edit";
-
-    //Add the Edit button to the task
-    taskItem.appendChild(editButton);
-
-    //run this code when the edit button is clicked 
-    editButton.addEventListener("click",function(){
-        
-        //find the task title inside this task
-        const taskTitle = taskItem.querySelector(".task-info h3 ");
-
-        //ask the user for the new task name
-
-        const newTaskName = prompt(
-            "Edit your task:",
-            taskTitle.textContent
-        );
-        // stop if the user cancels or enters nothing
-        if(newTaskName === null || newTaskName.trim() === ""){
-            return ;
-        }
-
-        //update the task title 
-
-        taskTitle.textContent = newTaskName;
-    });
-}
-
-
-// Add Delete  and Edit button to existing tasks
-const existingTasks = document.querySelectorAll(".task-item");
-
-existingTasks.forEach(function (taskItem) {
-
-    addDeleteButton(taskItem);
-
-    //Add Edit functionality to this existing task
-
-    addEditButton(taskItem);
-
-});
-
-// Checkbox functionality for existing tasks
-existingTasks.forEach(function (taskItem) {
-
-    const checkbox = taskItem.querySelector('input[type="checkbox"]');
-    const taskDue = taskItem.querySelector(".task-info p");
-
-    checkbox.addEventListener("change", function () {
-
-        if (checkbox.checked) {
+        //Add completed class if task is completed
+        if(task.completed){
             taskItem.classList.add("completed");
-            taskDue.textContent = "Completed";
-
-        } else {
-            taskItem.classList.remove("completed");
-            taskDue.textContent = "Due Today";
         }
-    });
+
+        //create checkbox
+        const checkbox = document.createElement("input");
+        checkbox.type = "checkbox";
+        checkbox.checked = task.completed;
+
+        checkbox.addEventListener("change",function(){
+            task.completed = checkbox.checked;
+
+            renderTasks();
+        });
+
+        //Create  task information container
+        const taskInfo = document.createElement("div");
+        taskInfo.classList.add("task-info");
+
+        //create task title 
+        const taskTitle = document.createElement("h3");
+        taskTitle.textContent = task.title;
+
+        //Create due date
+        const taskDue = document.createElement("p");
+        taskDue.textContent = "Due: " + task.dueDate;
+
+        //create priority 
+        const taskPriority = document.createElement("p");
+        taskPriority.textContent = "Priority: " + task.priority;
+
+        //put information inside task-info
+        taskInfo.appendChild(taskTitle);
+        taskInfo.appendChild(taskDue);
+        taskInfo.appendChild(taskPriority);
+
+        //put checkbox and task-info inside task-item 
+        taskItem.appendChild(checkbox);
+        taskItem.appendChild(taskInfo);
+
+        //create Delete button
+        const deleteButton = document.createElement("button");
+        deleteButton.textContent = "Delete";
+
+        deleteButton.addEventListener("click",function(){
+
+            const taskId = Number(taskItem.dataset.id);
+
+            tasks= tasks.filter(function(task){
+                return task.id !== taskId;
+            });
+
+            renderTasks();
+        });
+        taskItem.appendChild(deleteButton);
+
+        // Create Edit button
+const editButton = document.createElement("button");
+editButton.textContent = "Edit";
+
+editButton.addEventListener("click", function () {
+
+    const newTaskName = prompt("Edit your task:",task.title);
+
+    if (newTaskName === null || newTaskName.trim() === "") {
+        return;
+    }
+
+    task.title = newTaskName.trim();
+
+    renderTasks();
 });
+
+taskItem.appendChild(editButton);
+
+        // put task-item  inside task-list
+        taskList.appendChild(taskItem);
+    });
+
+    //update task count 
+    taskCount.textContent = tasks.length;
+}
+
+renderTasks();
 
 console.log(addTaskButton);
 console.log(taskList);
@@ -138,76 +169,29 @@ taskForm.addEventListener("submit", function (event) {
     const priority = taskPriorityInput.value;
     const dueDate = taskDateInput.value;
 
+    const newTasks ={
+        id:Date.now(),
+        title:taskName,
+        priority:priority,
+        dueDate: dueDate,
+        completed:false
+    };
+
     console.log("Task Name:", taskName);
     console.log("Priority:", priority);
     console.log("Due Date:", dueDate);
 
-    // Create new task
-    const newTask = document.createElement("div");
-    newTask.classList.add("task-item");
+   tasks.push(newTasks);
 
-    // Create checkbox
-    const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-
-    // Create task information container
-    const taskInfo = document.createElement("div");
-    taskInfo.classList.add("task-info");
-
-    // Create task title
-    const taskTitle = document.createElement("h3");
-    taskTitle.textContent = taskName;
-
-    // Create task due date
-    const taskDue = document.createElement("p");
-    taskDue.textContent = "Due: " + dueDate;
-
-    // Create task priority
-    const taskPriority = document.createElement("p");
-    taskPriority.textContent = "Priority: " + priority;
-
-    // Add task details inside taskInfo
-    taskInfo.appendChild(taskTitle);
-    taskInfo.appendChild(taskDue);
-    taskInfo.appendChild(taskPriority);
-
-    // Add checkbox and task information to newTask
-    newTask.appendChild(checkbox);
-    newTask.appendChild(taskInfo);
-
-    // Add new task to task list
-    taskList.appendChild(newTask);
-
-    // Add Delete functionality
-    addDeleteButton(newTask);
-
-    // Add Edit functionality
-    addEditButton(newTask);
-
-    // Checkbox functionality
-    checkbox.addEventListener("change", function () {
-
-        if (checkbox.checked) {
-
-            newTask.classList.add("completed");
-            taskDue.textContent = "Completed";
-
-        } else {
-            newTask.classList.remove("completed");
-            taskDue.textContent = "Due: " + dueDate;
-
-        }
-    });
-
-    // Update task count
-    taskCount.textContent = taskList.children.length;
-
-    // Clear the form
-    taskForm.reset();
-
-    // Close the modal
-    taskModal.style.display = "none";
-    console.log("New task added:", newTask);
+   renderTasks();
+   
+   taskCount.textContent = tasks.length;
+   
+   taskForm.reset();
+   
+   taskModal.style.display="none";
+    
+   console.log("New tasks added:", newTasks);
 });
 // task filtering
 
