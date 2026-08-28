@@ -23,6 +23,16 @@ let tasks = [
     }
 ];
 
+const savedTasks = localStorage.getItem("tasks");
+
+if(savedTasks){
+    tasks = JSON.parse(savedTasks);
+}
+
+//save tasks to LocalStorage
+function saveTasks(){
+    localStorage.setItem("tasks",JSON.stringify(tasks));
+}
 // select elements from the add task modal
 
 const taskModal = document.querySelector("#task-modal");
@@ -61,6 +71,8 @@ function renderTasks(){
 
         checkbox.addEventListener("change",function(){
             task.completed = checkbox.checked;
+
+            saveTasks();
 
             renderTasks();
         });
@@ -102,6 +114,8 @@ function renderTasks(){
                 return task.id !== taskId;
             });
 
+            saveTasks();
+
             renderTasks();
         });
         taskItem.appendChild(deleteButton);
@@ -120,6 +134,7 @@ editButton.addEventListener("click", function () {
 
     task.title = newTaskName.trim();
 
+    saveTasks();
     renderTasks();
 });
 
@@ -182,6 +197,8 @@ taskForm.addEventListener("submit", function (event) {
     console.log("Due Date:", dueDate);
 
    tasks.push(newTasks);
+
+   saveTasks();
 
    renderTasks();
    
