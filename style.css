@@ -481,3 +481,17 @@ body{
     border-color: #555;
     box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.08);
 }
+
+.course-card button {
+    margin-top: 15px;
+    margin-right: 8px;
+    padding: 8px 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background: white;
+    cursor: pointer;
+}
+
+.course-card button:hover {
+    background-color: #f1f1f1;
+}

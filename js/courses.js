@@ -13,14 +13,35 @@ let  courses = [{
     instructor: "Dr.verma",
     credits: 4,
     semester: 1
-},
+}];
+   // get saved courses from Local Storage
 
-];
+   const savedCourses = localStorage.getItem("courses");
+
+   if(savedCourses){
+    courses = JSON.parse(savedCourses);
+   }
+
+   //save courses to local storage
+
+   function saveCourses(){
+    localStorage.setItem("courses",JSON.stringify(courses));
+   }
+
+   //select course count 
+
+   const courseCount = document.querySelector(".course-count");
+
+   //render courses
 function renderCourses() {
 
     const courseList = document.querySelector(".course-list");
 
     courseList.innerHTML = "";
+
+    //update course count
+
+    courseCount.textContent = courses.length;
 
     courses.forEach(function (course) {
         const courseCard = document.createElement("div");
@@ -52,16 +73,47 @@ function renderCourses() {
 
         editButton.textContent = "Edit";
 
+        editButton.addEventListener("click",function(){
+
+            // find selected course
+
+            const selectedCourse = courses.find(function(item){
+                return item.id === course.id;
+            });
+
+            console.log("selected course:",selectedCourse);
+
+            //remember which course is being edited
+
+            editingCourseId = selectedCourse.id;
+
+            //change modal text
+
+            courseModalTitle.textContent = "Edit Course";
+
+            courseSubmitButton.textContent = "update Course";
+
+            // put existing course information into form
+
+            courseNameInput.value = selectedCourse.name;
+            courseCodeInput.value = selectedCourse.code;
+            courseInstructorInput.value = selectedCourse.instructor;
+            courseCreditsInput.value = selectedCourse.credits;
+            courseSemesterInput.value = selectedCourse.semester;
+
+            //open course modal
+
+            courseModal.style.display = "flex";
+
+        });
+
         courseCard.appendChild(editButton);
+    
 
         // Create Delete button
         const deleteButton = document.createElement("button");
 
         deleteButton.textContent = "Delete";
-
-        // Add Delete button to course card
-        courseCard.appendChild(deleteButton);
-
 
         // Delete course when Delete button is clicked
         deleteButton.addEventListener("click", function () {
@@ -71,47 +123,21 @@ function renderCourses() {
                 return item.id !== course.id;
             });
 
+            //save updated courses
+
+            saveCourses();
+
             // Display the updated courses
             renderCourses();
 
         });
 
-        editButton.addEventListener("click", function () {
-
-            // Find the selected course using its ID
-            const selectedCourse = courses.find(function (item) {
-                return item.id === course.id;
-            });
-
-            console.log("Selected course:", selectedCourse);
-
-            // Remember which course we are editing
-
-            editingCourseId = selectedCourse.id;
-
-            // Change modal text
-            courseModalTitle.textContent = "Edit Course";
-            courseSubmitButton.textContent = "Update Course";
-
-            // Put existing course information into the form
-
-            courseNameInput.value = selectedCourse.name;
-            courseCodeInput.value = selectedCourse.code;
-            courseInstructorInput.value = selectedCourse.instructor;
-            courseCreditsInput.value = selectedCourse.credits;
-            courseSemesterInput.value = selectedCourse.semester;
-
-            // Open the course modal
-
-            courseModal.style.display = "flex";
-
-        });
-        courseCard.appendChild(editButton);
+        courseCard.appendChild(deleteButton);
 
         courseList.appendChild(courseCard);
+
     });
 }
-renderCourses();
 
 // Select Course modal elements
 
@@ -120,23 +146,6 @@ const courseModal = document.querySelector("#course-modal");
 const closeCourseModalButton = document.querySelector("#close-course-modal-button");
 const cancelCourseButton = document.querySelector("#cancel-course-button");
 
-// Open Course Modal
-
-addCourseButton.addEventListener("click", function () {
-    courseModal.style.display = "flex";
-});
-
-// Close Course Modal using X button
-
-closeCourseModalButton.addEventListener("click", function () {
-    courseModal.style.display = "none";
-});
-
-// Close Course Modal using Cancel button
-
-cancelCourseButton.addEventListener("click", function () {
-    courseModal.style.display = "none";
-});
 // Select Course form elements
 
 const courseForm = document.querySelector("#course-form");
@@ -155,6 +164,41 @@ const courseSubmitButton = document.querySelector("#course-form button[type='sub
 
 let editingCourseId = null;
 
+// Open Course Modal for ADD
+
+addCourseButton.addEventListener("click", function () {
+
+    // Reset editing mode
+
+    editingCourseId = null;
+
+    // Change modal back to Add mode
+
+    courseModalTitle.textContent = "Add New Course";
+    courseSubmitButton.textContent = "Add Course";
+
+    // Clear previous values
+
+    courseForm.reset();
+
+    // Open modal
+
+    courseModal.style.display = "flex";
+
+});
+
+// Close Course Modal using X button
+
+closeCourseModalButton.addEventListener("click", function () {
+    courseModal.style.display = "none";
+});
+
+// Close Course Modal using Cancel button
+
+cancelCourseButton.addEventListener("click", function () {
+    courseModal.style.display = "none";
+});
+
 // Handle Course form submission
 
 courseForm.addEventListener("submit", function (event) {
@@ -168,7 +212,6 @@ courseForm.addEventListener("submit", function (event) {
     const instructor = courseInstructorInput.value.trim();
     const credits = Number(courseCreditsInput.value);
     const semester = Number(courseSemesterInput.value);
-
 
     // Check whether we are editing or adding
     if (editingCourseId !== null) {
@@ -184,6 +227,10 @@ courseForm.addEventListener("submit", function (event) {
         courseToEdit.instructor = instructor;
         courseToEdit.credits = credits;
         courseToEdit.semester = semester;
+
+        //save updated course
+
+        saveCourses();
 
         console.log("Course updated:", courseToEdit);
 
@@ -202,6 +249,9 @@ courseForm.addEventListener("submit", function (event) {
         // Add new course to courses array
         courses.push(newCourse);
 
+        //save courses
+        saveCourses();
+
         console.log("New course added:", newCourse);
     }
 
@@ -217,5 +267,11 @@ courseForm.addEventListener("submit", function (event) {
     // Reset editing mode
     editingCourseId = null;
 
-    // console.log("New course added:", newCourse);
+    // reset modal text
+    courseModalTitle.textContent="Add new course";
+    courseSubmitButton.textContent="add course";
 });
+
+//initial render
+
+renderCourses();
