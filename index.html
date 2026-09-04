@@ -22,10 +22,21 @@
     <div class="app-layout">
         <nav class="sidebar">
             <ul>
-                <li><a href="#" class="nav-link active"> Dashboard</a></li>
-                <li><a href="#" class="nav-link"> Tasks</a></li>
-                <li><a href="#" class="nav-link"> Courses</a></li>
-                <li><a href="#" class="nav-link"> Attendance</a></li>
+                <li>
+                    <a href="index.html" class="nav-link active">Dashboard</a>
+                </li>
+
+                <li>
+                    <a href="tasks.html" class="nav-link">Tasks</a>
+                </li>
+
+                <li>
+                    <a href="courses.html" class="nav-link">Courses</a>
+                </li>
+
+                <li>
+                    <a href="attendance.html" class="nav-link"> Attendance </a>
+                </li>
                 <li><a href="#" class="nav-link"> Notes</a></li>
                 <li><a href="#" class="nav-link"> Analytics</a></li>
                 <li><a href="#" class="nav-link"> Calendar</a></li>
@@ -43,7 +54,7 @@
                 </div>
                 <div class="stat-card">
                     <h3>Courses</h3>
-                    <p class ="course-count">0</p>
+                    <p class="course-count">0</p>
                 </div>
                 <div class="stat-card">
                     <h3>Attendance</h3>
@@ -74,12 +85,13 @@
                     <button id="add-course-button">Add Course</button>
                 </div>
 
-                <div class = "course-list">
+                <div class="course-list">
                 </div>
             </section>
+
         </main>
     </div>
-    
+
     <!-- Add task Modal -->
     <div id="task-modal" class="task-modal">
 
@@ -111,10 +123,7 @@
                 <!-- Task Due Date -->
                 <label for="task-date-input">Due Date</label>
 
-                <input type="date" 
-                id="task-date-input" 
-                required
-                >
+                <input type="date" id="task-date-input" required>
 
                 <!-- form buttons -->
                 <div class="modal-actions">
@@ -127,85 +136,56 @@
     </div>
 
     <!-- Add Course Modal -->
-<div id="course-modal" class="course-modal">
+    <div id="course-modal" class="course-modal">
 
-    <div class="course-modal-content">
+        <div class="course-modal-content">
 
-        <!-- Modal Header -->
-        <div class="modal-header">
-            <h2>Add New Course</h2>
-            <button type="button" id="close-course-modal-button">&times;</button>
-        </div>
-
-        <!-- Add Course Form -->
-        <form id="course-form">
-
-            <!-- Course Name -->
-            <label for="course-name-input">Course Name</label>
-            <input
-                type="text"
-                id="course-name-input"
-                placeholder="Enter course name"
-                required
-            >
-
-            <!-- Course Code -->
-            <label for="course-code-input">Course Code</label>
-            <input
-                type="text"
-                id="course-code-input"
-                placeholder="Enter course code"
-                required
-            >
-
-            <!-- Instructor -->
-            <label for="course-instructor-input">Instructor</label>
-            <input
-                type="text"
-                id="course-instructor-input"
-                placeholder="Enter instructor name"
-                required
-            >
-
-            <!-- Credits -->
-            <label for="course-credits-input">Credits</label>
-            <input
-                type="number"
-                id="course-credits-input"
-                placeholder="Enter credits"
-                min="1"
-                max="10"
-                required
-            >
-
-            <!-- Semester -->
-            <label for="course-semester-input">Semester</label>
-            <input
-                type="number"
-                id="course-semester-input"
-                placeholder="Enter semester"
-                min="1"
-                max="8"
-                required
-            >
-
-            <!-- Form Buttons -->
-            <div class="modal-actions">
-
-                <button type="button" id="cancel-course-button">
-                    Cancel
-                </button>
-
-                <button type="submit">
-                    Add Course
-                </button>
-
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h2>Add New Course</h2>
+                <button type="button" id="close-course-modal-button">&times;</button>
             </div>
 
-        </form>
+            <!-- Add Course Form -->
+            <form id="course-form">
+
+                <!-- Course Name -->
+                <label for="course-name-input">Course Name</label>
+                <input type="text" id="course-name-input" placeholder="Enter course name" required>
+
+                <!-- Course Code -->
+                <label for="course-code-input">Course Code</label>
+                <input type="text" id="course-code-input" placeholder="Enter course code" required>
+
+                <!-- Instructor -->
+                <label for="course-instructor-input">Instructor</label>
+                <input type="text" id="course-instructor-input" placeholder="Enter instructor name" required>
+
+                <!-- Credits -->
+                <label for="course-credits-input">Credits</label>
+                <input type="number" id="course-credits-input" placeholder="Enter credits" min="1" max="10" required>
+
+                <!-- Semester -->
+                <label for="course-semester-input">Semester</label>
+                <input type="number" id="course-semester-input" placeholder="Enter semester" min="1" max="8" required>
+
+                <!-- Form Buttons -->
+                <div class="modal-actions">
+
+                    <button type="button" id="cancel-course-button">
+                        Cancel
+                    </button>
+
+                    <button type="submit">
+                        Add Course
+                    </button>
+
+                </div>
+
+            </form>
+        </div>
     </div>
-</div>
-  <!-- javascript should be load after html -->
+    <!-- javascript should be load after html -->
     <script src="js/script.js"></script>
     <script src="js/courses.js"></script>
 </body>

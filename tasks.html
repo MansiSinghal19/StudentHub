@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Tasks - StudentHub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="top-header">
+
+        <div class="logo">
+            <h1>StudentHub</h1>
+            <p>Student Productivity & Academic Management System</p>
+        </div>
+
+        <div class="user-area">
+            <span>🔔</span>
+            <span>👤 Student</span>
+        </div>
+
+    </header>
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+        <nav class="sidebar">
+
+            <ul>
+                <li>
+                    <a href="index.html" class="nav-link">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tasks.html" class="nav-link active">
+                        Tasks
+                    </a>
+                </li>
+
+                <li>
+                    <a href="courses.html" class="nav-link">
+                        Courses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="attendence.html" class="nav-link">
+                        Attendance
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Notes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Analytics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Calendar
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+
+        <!-- Tasks Page -->
+        <main class="dashboard">
+
+            <section class="welcome-section">
+                <h2>Tasks</h2>
+                <p>Manage your academic tasks and stay organized.</p>
+            </section>
+
+
+            <section class="tasks-section">
+                <div class="section-header">
+                    <h2>My Tasks</h2>
+                    <button id="add-task-button">
+                        Add Task
+                    </button>
+                </div>
+
+                <!-- Task filter buttons -->
+
+                <div class="task-filters">
+                    <button class="filter-btn active" data-filter="all">
+                        All
+                    </button>
+
+                    <button class="filter-btn" data-filter="pending">
+                        Pending
+                    </button>
+
+                    <button class="filter-btn" data-filter="completed">
+                        Completed
+                    </button>
+
+                </div>
+
+                <!-- Task search box -->
+
+                <div class="task-search">
+                    <input type="text" id="task-search-input" placeholder="Search tasks...">
+                </div>
+
+                <!-- Task list -->
+                <div class="task-list">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div id="task-modal" class="task-modal">
+        <div class="task-modal-content">
+            <div class="modal-header">
+                <h2>Add New Task</h2>
+                <button type="button" id="close-modal-button">
+                    &times;
+                </button>
+            </div>
+
+            <form id="task-form">
+                <label for="task-name-input">
+                    Task Name
+                </label>
+                <input type="text" id="task-name-input" placeholder="Enter your task" required>
+
+                <label for="task-priority-input">
+                    Priority
+                </label>
+
+                <select id="task-priority-input" required>
+
+                    <option value="">
+                        Select priority
+                    </option>
+
+                    <option value="High">
+                        High
+                    </option>
+
+                    <option value="Medium">
+                        Medium
+                    </option>
+
+                    <option value="Low">
+                        Low
+                    </option>
+
+                </select>
+
+
+                <label for="task-date-input">
+                    Due Date
+                </label>
+
+                <input type="date" id="task-date-input" required>
+
+
+                <div class="modal-actions">
+
+                    <button type="button" id="cancel-task-button">
+                        Cancel
+                    </button>
+
+                    <button type="submit">
+                        Add Task
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Attendance - StudentHub</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+    <!-- Header -->
+
+    <header class="top-header">
+
+        <div class="logo">
+
+            <h1>StudentHub</h1>
+
+            <p>
+                Student Productivity & Academic Management System
+            </p>
+
+        </div>
+
+
+        <div class="user-area">
+
+            <span>🔔</span>
+
+            <span>👤 Student</span>
+
+        </div>
+
+    </header>
+
+
+
+    <div class="app-layout">
+
+
+        <!-- Sidebar -->
+
+        <nav class="sidebar">
+
+            <ul>
+
+                <li>
+                    <a href="index.html" class="nav-link">
+                        Dashboard
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="tasks.html" class="nav-link">
+                        Tasks
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="courses.html" class="nav-link">
+                        Courses
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="attendance.html" class="nav-link active">
+                        Attendance
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Notes
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Analytics
+                    </a>
+                </li>
+
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Calendar
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+
+        <!-- Attendance Main Content -->
+
+        <main class="dashboard">
+
+
+            <!-- Page Heading -->
+
+            <section class="welcome-section">
+
+                <h2>Attendance</h2>
+
+                <p>
+                    Track your lecture attendance and monitor your progress.
+                </p>
+
+            </section>
+
+
+
+            <!-- Add Attendance -->
+
+            <section class="attendance-section">
+
+
+                <div class="section-header">
+
+                    <h2>Mark Attendance</h2>
+
+                </div>
+
+
+                <div class="attendance-form">
+
+
+                    <!-- Date -->
+
+                    <div class="form-group">
+
+                        <label for="attendance-date">
+                            Date
+                        </label>
+
+                        <input type="date" id="attendance-date">
+
+                    </div>
+
+
+
+                    <!-- Course -->
+
+                    <div class="form-group">
+
+                        <label for="attendance-course">
+                            Course
+                        </label>
+
+                        <select id="attendance-course">
+
+                            <option value="">
+                                Select Course
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+
+                    <!-- Number of lectures -->
+
+                    <div class="form-group">
+
+                        <label for="lecture-count">
+                            Number of Lectures
+                        </label>
+
+                        <input type="number" id="lecture-count" min="1" value="1">
+
+                    </div>
+
+
+
+                    <button id="add-attendance-button">
+                        Add Lectures
+                    </button>
+
+
+                </div>
+
+
+
+                <!-- Lecture attendance will appear here -->
+
+                <div id="lecture-attendance-container">
+
+                </div>
+
+
+            </section>
+
+
+
+            <!-- Attendance Summary -->
+
+            <section class="attendance-summary">
+
+                <div class="section-header">
+
+                    <h2>Attendance Summary</h2>
+
+                </div>
+
+
+                <div id="attendance-summary-list">
+
+                </div>
+
+            </section>
+
+
+        </main>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/courses.js"></script>
+
+    <script src="js/attendance.js"></script>
+
+
+</body>
+
+</html>

@@ -41,7 +41,9 @@ function renderCourses() {
 
     //update course count
 
-    courseCount.textContent = courses.length;
+    if (courseCount) {
+        courseCount.textContent = courses.length;
+    }
 
     courses.forEach(function (course) {
         const courseCard = document.createElement("div");

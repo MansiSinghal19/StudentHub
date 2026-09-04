@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Courses - StudentHub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="top-header">
+
+        <div class="logo">
+            <h1>StudentHub</h1>
+            <p>Student Productivity & Academic Management System</p>
+        </div>
+
+        <div class="user-area">
+            <span>🔔</span>
+            <span>👤 Student</span>
+        </div>
+
+    </header>
+
+
+    <div class="app-layout">
+
+        <!-- Sidebar -->
+
+        <nav class="sidebar">
+
+            <ul>
+
+                <li>
+                    <a href="index.html" class="nav-link">
+                        Dashboard
+                    </a>
+                </li>
+
+                <li>
+                    <a href="tasks.html" class="nav-link">
+                        Tasks
+                    </a>
+                </li>
+
+                <li>
+                    <a href="courses.html" class="nav-link active">
+                        Courses
+                    </a>
+                </li>
+
+                <li>
+                    <a href="attendance.html" class="nav-link">
+                        Attendance
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Notes
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Analytics
+                    </a>
+                </li>
+
+                <li>
+                    <a href="#" class="nav-link">
+                        Calendar
+                    </a>
+                </li>
+
+            </ul>
+
+        </nav>
+
+
+        <!-- Courses Page -->
+
+        <main class="dashboard">
+
+            <section class="welcome-section">
+
+                <h2>Courses</h2>
+
+                <p>Manage your courses and academic information.</p>
+
+            </section>
+
+
+            <section class="courses-section">
+
+                <div class="section-header">
+
+                    <h2>My Courses</h2>
+
+                    <button id="add-course-button">
+                        Add Course
+                    </button>
+
+                </div>
+
+
+                <div class="course-list">
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Add Course Modal -->
+
+    <div id="course-modal" class="course-modal">
+
+        <div class="course-modal-content">
+
+            <div class="modal-header">
+
+                <h2>Add New Course</h2>
+
+                <button
+                    type="button"
+                    id="close-course-modal-button">
+                    &times;
+                </button>
+
+            </div>
+
+
+            <form id="course-form">
+
+                <label for="course-name-input">
+                    Course Name
+                </label>
+
+                <input
+                    type="text"
+                    id="course-name-input"
+                    placeholder="Enter course name"
+                    required
+                >
+
+
+                <label for="course-code-input">
+                    Course Code
+                </label>
+
+                <input
+                    type="text"
+                    id="course-code-input"
+                    placeholder="Enter course code"
+                    required
+                >
+
+
+                <label for="course-instructor-input">
+                    Instructor
+                </label>
+
+                <input
+                    type="text"
+                    id="course-instructor-input"
+                    placeholder="Enter instructor name"
+                    required
+                >
+
+
+                <label for="course-credits-input">
+                    Credits
+                </label>
+
+                <input
+                    type="number"
+                    id="course-credits-input"
+                    placeholder="Enter credits"
+                    min="1"
+                    max="10"
+                    required
+                >
+
+
+                <label for="course-semester-input">
+                    Semester
+                </label>
+
+                <input
+                    type="number"
+                    id="course-semester-input"
+                    placeholder="Enter semester"
+                    min="1"
+                    max="8"
+                    required
+                >
+
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancel-course-button">
+                        Cancel
+                    </button>
+
+                    <button type="submit">
+                        Add Course
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/courses.js"></script>
+
+</body>
+
+</html>
