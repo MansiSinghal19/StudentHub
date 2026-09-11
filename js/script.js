@@ -44,11 +44,21 @@ const closeModalButton = document.querySelector("#close-modal-button");
 const cancelTaskButton = document.querySelector("#cancel-task-button")
 
 //Display tasks from the tasks array
-function renderTasks(){
-    console.log("renderTasks function is running!");
+function renderTasks() {
 
-    //clear existing tasks from the page
+    const taskList = document.querySelector(".task-list");
+    const taskCount = document.querySelector(".task-count");
+
+    if (taskCount) {
+        taskCount.textContent = tasks.length;
+    }
+
+    if (!taskList) {
+        return;
+    }
+
     taskList.innerHTML = "";
+
 
     //Go through every task 
     tasks.forEach(function(task){
@@ -145,7 +155,10 @@ taskItem.appendChild(editButton);
     });
 
     //update task count 
+
+    if(taskCount){
     taskCount.textContent = tasks.length;
+    }
 }
 
 renderTasks();
@@ -155,12 +168,15 @@ console.log(taskList);
 console.log(taskCount);
 
 // OPEN ADD TASK MODAL
+if(addTaskButton){
 addTaskButton.addEventListener("click",function(){
     //show the modal
     taskModal.style.display ="flex";
 });
+}
 
 // CLOSE MODAL USING X BUTTON
+
 closeModalButton.addEventListener("click",function(){
     //hide the modal
     taskModal.style.display = "none";
@@ -202,7 +218,10 @@ taskForm.addEventListener("submit", function (event) {
 
    renderTasks();
    
-   taskCount.textContent = tasks.length;
+   //update task count
+if (taskCount) {
+    taskCount.textContent = tasks.length;
+}
    
    taskForm.reset();
    

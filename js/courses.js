@@ -36,6 +36,9 @@ let  courses = [{
 function renderCourses() {
 
     const courseList = document.querySelector(".course-list");
+    if (!courseList) {
+        return;
+    }
 
     courseList.innerHTML = "";
 
@@ -168,6 +171,7 @@ let editingCourseId = null;
 
 // Open Course Modal for ADD
 
+if (addCourseButton) {
 addCourseButton.addEventListener("click", function () {
 
     // Reset editing mode
@@ -188,20 +192,28 @@ addCourseButton.addEventListener("click", function () {
     courseModal.style.display = "flex";
 
 });
+}
 
 // Close Course Modal using X button
+
+if(closeCourseModalButton){
 
 closeCourseModalButton.addEventListener("click", function () {
     courseModal.style.display = "none";
 });
-
+}
 // Close Course Modal using Cancel button
+
+if(cancelCourseButton){
 
 cancelCourseButton.addEventListener("click", function () {
     courseModal.style.display = "none";
 });
+}
 
 // Handle Course form submission
+
+if(courseForm){
 
 courseForm.addEventListener("submit", function (event) {
 
@@ -273,6 +285,7 @@ courseForm.addEventListener("submit", function (event) {
     courseModalTitle.textContent="Add new course";
     courseSubmitButton.textContent="add course";
 });
+}
 
 //initial render
 
