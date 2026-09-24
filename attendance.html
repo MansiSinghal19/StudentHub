@@ -2,53 +2,30 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Attendance - StudentHub</title>
-
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 
 <body>
 
-    <!-- Header -->
+    <!-- TOP HEADER -->
 
     <header class="top-header">
-
         <div class="logo">
-
             <h1>StudentHub</h1>
-
-            <p>
-                Student Productivity & Academic Management System
-            </p>
-
+            <p>Student Productivity & Academic Management System</p>
         </div>
-
-
-        <div class="user-area">
-
-            <span>🔔</span>
-
-            <span>👤 Student</span>
-
-        </div>
-
     </header>
 
-
+    <!-- APP LAYOUT -->
 
     <div class="app-layout">
 
+        <!-- SIDEBAR -->
 
-        <!-- Sidebar -->
-
-        <nav class="sidebar">
+        <aside class="sidebar">
 
             <ul>
 
@@ -58,13 +35,11 @@
                     </a>
                 </li>
 
-
                 <li>
                     <a href="tasks.html" class="nav-link">
                         Tasks
                     </a>
                 </li>
-
 
                 <li>
                     <a href="courses.html" class="nav-link">
@@ -72,13 +47,11 @@
                     </a>
                 </li>
 
-
                 <li>
                     <a href="attendance.html" class="nav-link active">
                         Attendance
                     </a>
                 </li>
-
 
                 <li>
                     <a href="#" class="nav-link">
@@ -86,13 +59,11 @@
                     </a>
                 </li>
 
-
                 <li>
                     <a href="#" class="nav-link">
                         Analytics
                     </a>
                 </li>
-
 
                 <li>
                     <a href="#" class="nav-link">
@@ -102,142 +73,250 @@
 
             </ul>
 
-        </nav>
+        </aside>
 
-
-
-        <!-- Attendance Main Content -->
+        <!-- MAIN DASHBOARD -->
 
         <main class="dashboard">
-
-
-            <!-- Page Heading -->
-
-            <section class="welcome-section">
-
-                <h2>Attendance</h2>
-
+            <div class="page-heading">
+                <h1>Attendance</h1>
                 <p>
-                    Track your lecture attendance and monitor your progress.
+                    Manage your timetable and track your attendance.
                 </p>
+            </div>
 
-            </section>
-
-
-
-            <!-- Add Attendance -->
+            <!-- WEEKLY TIMETABLE -->
 
             <section class="attendance-section">
-
-
                 <div class="section-header">
-
-                    <h2>Mark Attendance</h2>
-
-                </div>
-
-
-                <div class="attendance-form">
-
-
-                    <!-- Date -->
-
-                    <div class="form-group">
-
-                        <label for="attendance-date">
-                            Date
-                        </label>
-
-                        <input type="date" id="attendance-date">
-
+                    <div>
+                        <h2>Weekly Timetable</h2>
+                        <p class="section-description">
+                            Add and manage your weekly class schedule.
+                        </p>
                     </div>
 
-
-
-                    <!-- Course -->
-
-                    <div class="form-group">
-
-                        <label for="attendance-course">
-                            Course
-                        </label>
-
-                        <select id="attendance-course">
-
-                            <option value="">
-                                Select Course
-                            </option>
-
-                        </select>
-
+                    <div class="section-header-actions">
+                        <button
+                            type="button"
+                            id="add-timetable-button"
+                            class="primary-button">
+                            + Add Timetable Entry
+                        </button>
                     </div>
-
-
-
-                    <!-- Number of lectures -->
-
-                    <div class="form-group">
-
-                        <label for="lecture-count">
-                            Number of Lectures
-                        </label>
-
-                        <input type="number" id="lecture-count" min="1" value="1">
-
-                    </div>
-
-
-
-                    <button id="add-attendance-button">
-                        Add Lectures
-                    </button>
-
-
                 </div>
 
+                <div id="timetable-list" class="timetable-list">
 
-
-                <!-- Lecture attendance will appear here -->
-
-                <div id="lecture-attendance-container">
-
-                </div>
-
-
-            </section>
-
-
-
-            <!-- Attendance Summary -->
-
-            <section class="attendance-summary">
-
-                <div class="section-header">
-
-                    <h2>Attendance Summary</h2>
-
-                </div>
-
-
-                <div id="attendance-summary-list">
+                    <!-- Timetable entries will appear here -->
 
                 </div>
 
             </section>
 
+            <!-- TODAY'S ATTENDANCE -->
 
+            <section class="attendance-section">
+                <div class="section-header">
+                    <div>
+                        <h2>Today's Attendance</h2>
+                        <p class="section-description">
+                            Mark attendance for today's lectures.
+                        </p>
+                    </div>
+
+                    <p id="today-date" class="today-date"></p>
+
+                </div>
+
+                <div
+                    id="today-attendance-list"
+                    class="today-attendance-list">
+
+                    <!-- Today's attendance cards will appear here -->
+
+                </div>
+
+            </section>
+
+            <!-- ATTENDANCE SUMMARY -->
+
+            <section class="attendance-section">
+                <div class="section-header">
+                    <div>
+                        <h2>Attendance Summary</h2>
+                        <p class="section-description">
+                            View your course-wise attendance percentage.
+                        </p>
+                    </div>
+                </div>
+
+                <div
+                    id="attendance-summary-list"
+                    class="attendance-summary-list">
+
+                    <!-- Summary cards will appear here -->
+
+                </div>
+            </section>
         </main>
-
     </div>
 
+    <!-- TIMETABLE MODAL -->
 
-    <!-- JavaScript -->
+    <div
+        id="timetable-modal"
+        class="modal hidden">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h2 id="timetable-modal-title">
+                    Add Timetable Entry
+                </h2>
+                <button
+                    type="button"
+                    id="close-timetable-modal"
+                    class="close-modal-button">
+                    &times;
+                </button>
+            </div>
+
+            <form id="timetable-form">
+
+                <!-- Day -->
+
+                <div class="form-group">
+                    <label for="timetable-day">
+                        Day
+                    </label>
+
+                    <select
+                        id="timetable-day"
+                        required>
+
+                        <option value="">
+                            Select Day
+                        </option>
+
+                        <option value="Monday">
+                            Monday
+                        </option>
+
+                        <option value="Tuesday">
+                            Tuesday
+                        </option>
+
+                        <option value="Wednesday">
+                            Wednesday
+                        </option>
+
+                        <option value="Thursday">
+                            Thursday
+                        </option>
+
+                        <option value="Friday">
+                            Friday
+                        </option>
+
+                        <option value="Saturday">
+                            Saturday
+                        </option>
+
+                        <option value="Sunday">
+                            Sunday
+                        </option>
+                    </select>
+                </div>
+
+                <!-- Course -->
+
+                <div class="form-group">
+
+                    <label for="timetable-course">
+                        Course
+                    </label>
+
+                    <select
+                        id="timetable-course"required>
+                        <option value="">
+                            Select Course
+                        </option>
+                    </select>
+
+                </div>
+
+                <!-- Start Time -->
+
+                <div class="form-group">
+
+                    <label for="timetable-start-time">
+                        Start Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="timetable-start-time"
+                        required>
+
+                </div>
+
+                <!-- End Time -->
+
+                <div class="form-group">
+
+                    <label for="timetable-end-time">
+                        End Time
+                    </label>
+
+                    <input
+                        type="time"
+                        id="timetable-end-time"
+                        required>
+
+                </div>
+
+                <!-- Room -->
+
+                <div class="form-group">
+
+                    <label for="timetable-room">
+                        Room Number
+                    </label>
+
+                    <input
+                        type="text"
+                        id="timetable-room"
+                        placeholder="Example: Lab 2 / Room 304"
+                        required>
+
+                </div>
+
+                <!-- Modal Buttons -->
+
+                <div class="modal-actions">
+
+                    <button
+                        type="button"
+                        id="cancel-timetable-button"
+                        class="cancel-button">Cancel
+
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="primary-button"> Save Timetable
+
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT FILES-->
 
     <script src="js/courses.js"></script>
-
     <script src="js/attendance.js"></script>
 
-
 </body>
-
 </html>
