@@ -33,10 +33,7 @@ main{
 *{
     box-sizing: border-box;
 }
-body{
-    margin:0;
-    font-family: Arial,sans-serif ;
-}
+
 .logo h1{
     margin: 0;
     font-size: 30px;
@@ -605,133 +602,581 @@ body{
 
    /* ATTENDANCE SECTION */
 
+/* ATTENDANCE PAGE */
+
+.page-heading {
+    margin-bottom: 35px;
+}
+
+.page-heading h1 {
+    margin-bottom: 8px;
+}
+
+.page-heading p {
+    color: #64748b;
+}
+
+/* ATTENDANCE SECTION */
+
 .attendance-section {
     margin-top: 35px;
 }
 
-/* Attendance Form Card */
+/* SECTION HEADER */
 
-.attendance-form {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     gap: 20px;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    margin: 0 0 7px;
+    font-size: 24px;
+    color: #1e293b;
+}
+
+.section-description {
+    margin: 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.section-header-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+/* BUTTONS */
+
+.primary-button,
+.secondary-button,
+.cancel-button,
+.delete-button,
+.delete-small-button {
+    border: none;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.primary-button {
+    background: #2563eb;
+    color: #ffffff;
+}
+
+.primary-button:hover {
+    background: #1d4ed8;
+    transform: translateY(-1px);
+}
+
+.secondary-button {
+    background: #e0e7ff;
+    color: #3730a3;
+}
+
+.secondary-button:hover {
+    background: #c7d2fe;
+}
+
+.cancel-button {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+}
+
+.cancel-button:hover {
+    background: #e2e8f0;
+}
+
+.delete-button,
+.delete-small-button {
+    background: #fee2e2;
+    color: #b91c1c;
+}
+
+.delete-button:hover,
+.delete-small-button:hover {
+    background: #fecaca;
+}
+
+/* EMPTY STATE */
+
+.empty-state {
     padding: 25px;
-    background: rgba(255, 255, 255, 0.94);
+    text-align: center;
+    color: #64748b;
+    background: #ffffff;
+    border: 1px dashed #cbd5e1;
+    border-radius: 12px;
+    font-size: 14px;
+}
+
+/* TIMETABLE LIST */
+
+.timetable-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* DAY CARD */
+
+.timetable-day-card {
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.95);
     border: 1px solid #e2e8f0;
     border-radius: 14px;
     box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
 }
 
-/* Form Groups */
+.timetable-day-card h3 {
+    margin: 0 0 18px;
+    color: #1e293b;
+    font-size: 20px;
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 12px;
+}
 
-.attendance-form .form-group {
+/* TIMETABLE ENTRY */
+
+.timetable-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 17px;
+    margin-bottom: 12px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-left: 4px solid #2563eb;
+    border-radius: 10px;
+}
+
+.timetable-entry:last-child {
+    margin-bottom: 0;
+}
+
+.timetable-entry-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.timetable-entry-info h4 {
+    margin: 0 0 9px;
+    color: #1e293b;
+    font-size: 16px;
+}
+
+.timetable-entry-info p {
+    margin: 5px 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* TODAY'S DATE */
+
+.today-date {
+    margin: 0;
+    padding: 9px 13px;
+    background: #eff6ff;
+    color: #1d4ed8;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/*  TODAY'S ATTENDANCE */
+
+.today-attendance-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.today-attendance-card {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.today-attendance-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.today-attendance-info h3 {
+    margin: 0 0 10px;
+    color: #1e293b;
+    font-size: 17px;
+}
+
+.today-attendance-info p {
+    margin: 5px 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* ATTENDANCE STATUS BUTTONS */
+
+.attendance-status-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.attendance-status-button {
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.present-button {
+    background: #dcfce7;
+    color: #166534;
+    border-color: #86efac;
+}
+
+.present-button:hover,
+.present-button.selected {
+    background: #16a34a;
+    color: #ffffff;
+}
+
+.absent-button {
+    background: #fee2e2;
+    color: #991b1b;
+    border-color: #fca5a5;
+}
+
+.absent-button:hover,
+.absent-button.selected {
+    background: #dc2626;
+    color: #ffffff;
+}
+
+.edit-button {
+    background: #eff6ff;
+    color: #1d4ed8;
+    border: 1px solid #93c5fd;
+    border-radius: 6px;
+    padding: 6px 12px;
+    cursor: pointer;
+}
+
+.edit-button:hover {
+    background: #2563eb;
+    color: #ffffff;
+}
+.no-class-button {
+    background: #f3f4f6;
+    color: #374151;
+    border-color: #d1d5db;
+}
+
+.no-class-button:hover,
+.no-class-button.selected {
+    background: #6b7280;
+    color: #ffffff;
+}
+
+/* ATTENDANCE DATE SELECTOR */
+
+.attendance-date-selector {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+}
+
+.attendance-date-selector label {
+    font-size: 16px;
+    font-weight: 500;
+    color: #1f2937;
+}
+
+.attendance-date-selector input[type="date"] {
+    padding: 8px 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #ffffff;
+    color: #1f2937;
+    font-size: 15px;
+    cursor: pointer;
+    outline: none;
+}
+
+.attendance-date-selector input[type="date"]:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.15);
+}
+
+/* ATTENDANCE SUMMARY */
+
+.attendance-summary-list {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.attendance-summary-card {
+    padding: 22px;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
+}
+
+.attendance-summary-card h3 {
+    margin: 0 0 15px;
+    color: #1e293b;
+    font-size: 19px;
+}
+
+.attendance-summary-card p {
+    margin: 8px 0;
+    color: #64748b;
+    font-size: 13px;
+}
+
+.attendance-summary-card strong {
+    color: #1e293b;
+}
+
+.attendance-percentage {
+    display: inline-block;
+    margin-top: 15px !important;
+    padding: 8px 12px;
+    background: #dbeafe;
+    color: #1d4ed8 !important;
+    border-radius: 8px;
+    font-weight: 700;
+}
+
+/* MODAL */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    background: rgba(15, 23, 42, 0.55);
+    z-index: 9999;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-content {
+    width: 100%;
+    max-width: 520px;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 20px 50px rgba(15, 23, 42, 0.25);
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.modal-header h2 {
+    margin: 0;
+    color: #1e293b;
+    font-size: 23px;
+}
+
+.close-modal-button {
+    border: none;
+    background: transparent;
+    color: #64748b;
+    font-size: 28px;
+    cursor: pointer;
+    line-height: 1;
+}
+
+.close-modal-button:hover {
+    color: #1e293b;
+}
+
+/* FORMS */
+
+#timetable-form,
+#teacher-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
     display: flex;
     flex-direction: column;
     gap: 8px;
 }
 
-/* Labels */
-
-.attendance-form label {
+.form-group label {
+    color: #334155;
     font-size: 13px;
     font-weight: 600;
-    color: #334155;
 }
 
-/* Inputs and Select */
-
-.attendance-form input,
-.attendance-form select {
+.form-group input,
+.form-group select {
     width: 100%;
-    padding: 11px 13px;
-    border: 1px solid #dbe2ea;
+    padding: 12px 14px;
+    border: 1px solid #cbd5e1;
     border-radius: 8px;
     background: #ffffff;
     color: #1e293b;
-    font-size: 13px;
+    font-size: 14px;
     outline: none;
 }
 
-/* Input Focus */
-
-.attendance-form input:focus,
-.attendance-form select:focus {
-    border-color: #60a5fa;
-    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.10);
+.form-group input:focus,
+.form-group select:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-/* Add Lectures Button */
+/* MODAL ACTIONS */
 
-#add-attendance-button {
-    align-self: end;
-    padding: 11px 18px;
-    border: none;
-    border-radius: 9px;
-    background: #2563eb;
-    color: white;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 10px rgba(37, 99, 235, 0.18);
-    transition: all 0.2s ease;
+.modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 10px;
 }
 
-#add-attendance-button:hover {
-    background: #1d4ed8;
-    transform: translateY(-1px);
+/* TEACHER LIST */
+
+.teacher-list-section {
+    margin-top: 30px;
 }
 
-   /* LECTURE ATTENDANCE */
-   
-#lecture-attendance-container {
-    margin-top: 25px;
-}
-
-   /* ATTENDANCE SUMMARY */
-
-.attendance-summary {
-    margin-top: 40px;
-}
-
-#attendance-summary-list {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 18px;
-}
-
-/* Summary Card */
-
-.attendance-summary-card {
-    padding: 20px;
-    background: rgba(255, 255, 255, 0.94);
-    border: 1px solid #e2e8f0;
-    border-radius: 14px;
-    box-shadow: 0 4px 14px rgba(15, 23, 42, 0.05);
-}
-
-/* Summary Card Heading */
-
-.attendance-summary-card h3 {
-    margin: 0 0 12px;
-    font-size: 17px;
+.teacher-list-section h3 {
+    margin: 0 0 15px;
     color: #1e293b;
-}
-/* Summary Information */
-
-.attendance-summary-card p {
-    margin: 6px 0;
-    font-size: 13px;
-    color: #64748b;
+    font-size: 18px;
 }
 
-/* 
-   ATTENDANCE RESPONSIVE */
+.teacher-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.teacher-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    padding: 13px 15px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 9px;
+}
+
+.teacher-item-name {
+    color: #334155;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* RESPONSIVE DESIGN */
+
+@media (max-width: 900px) {
+
+    .section-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .section-header-actions {
+        width: 100%;
+    }
+
+    .today-attendance-card {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .attendance-status-buttons {
+        width: 100%;
+    }
+
+}
 
 @media (max-width: 700px) {
-    .attendance-form {
+
+    .attendance-summary-list {
         grid-template-columns: 1fr;
     }
-    #attendance-summary-list {
-        grid-template-columns: 1fr;
+
+    .timetable-entry {
+        align-items: flex-start;
+        flex-direction: column;
     }
+
+    .timetable-entry .delete-button {
+        align-self: flex-start;
+    }
+
+    .section-header-actions {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .section-header-actions button {
+        width: 100%;
+    }
+
+    .modal-content {
+        padding: 22px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .dashboard {
+        padding: 25px 18px;
+    }
+
+    .section-header h2 {
+        font-size: 21px;
+    }
+
+    .today-attendance-card,
+    .timetable-day-card,
+    .attendance-summary-card {
+        padding: 16px;
+    }
+
 }
