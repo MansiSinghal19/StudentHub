@@ -97,10 +97,7 @@
                     </div>
 
                     <div class="section-header-actions">
-                        <button
-                            type="button"
-                            id="add-timetable-button"
-                            class="primary-button">
+                        <button type="button" id="add-timetable-button" class="primary-button">
                             + Add Timetable Entry
                         </button>
                     </div>
@@ -123,15 +120,17 @@
                         <p class="section-description">
                             Mark attendance for today's lectures.
                         </p>
+                        <div class="attendance-date-selector">
+                            <label for="attendance-date">Select Date:</label>
+                            <input type="date" id="attendance-date">
+                        </div>
                     </div>
 
                     <p id="today-date" class="today-date"></p>
 
                 </div>
 
-                <div
-                    id="today-attendance-list"
-                    class="today-attendance-list">
+                <div id="today-attendance-list" class="today-attendance-list">
 
                     <!-- Today's attendance cards will appear here -->
 
@@ -151,9 +150,7 @@
                     </div>
                 </div>
 
-                <div
-                    id="attendance-summary-list"
-                    class="attendance-summary-list">
+                <div id="attendance-summary-list" class="attendance-summary-list">
 
                     <!-- Summary cards will appear here -->
 
@@ -164,9 +161,7 @@
 
     <!-- TIMETABLE MODAL -->
 
-    <div
-        id="timetable-modal"
-        class="modal hidden">
+    <div id="timetable-modal" class="modal hidden">
 
         <div class="modal-content">
 
@@ -174,10 +169,7 @@
                 <h2 id="timetable-modal-title">
                     Add Timetable Entry
                 </h2>
-                <button
-                    type="button"
-                    id="close-timetable-modal"
-                    class="close-modal-button">
+                <button type="button" id="close-timetable-modal" class="close-modal-button">
                     &times;
                 </button>
             </div>
@@ -191,9 +183,7 @@
                         Day
                     </label>
 
-                    <select
-                        id="timetable-day"
-                        required>
+                    <select id="timetable-day" required>
 
                         <option value="">
                             Select Day
@@ -237,8 +227,7 @@
                         Course
                     </label>
 
-                    <select
-                        id="timetable-course"required>
+                    <select id="timetable-course" required>
                         <option value="">
                             Select Course
                         </option>
@@ -254,10 +243,7 @@
                         Start Time
                     </label>
 
-                    <input
-                        type="time"
-                        id="timetable-start-time"
-                        required>
+                    <input type="time" id="timetable-start-time" required>
 
                 </div>
 
@@ -269,10 +255,7 @@
                         End Time
                     </label>
 
-                    <input
-                        type="time"
-                        id="timetable-end-time"
-                        required>
+                    <input type="time" id="timetable-end-time" required>
 
                 </div>
 
@@ -284,11 +267,7 @@
                         Room Number
                     </label>
 
-                    <input
-                        type="text"
-                        id="timetable-room"
-                        placeholder="Example: Lab 2 / Room 304"
-                        required>
+                    <input type="text" id="timetable-room" placeholder="Example: Lab 2 / Room 304" required>
 
                 </div>
 
@@ -296,16 +275,11 @@
 
                 <div class="modal-actions">
 
-                    <button
-                        type="button"
-                        id="cancel-timetable-button"
-                        class="cancel-button">Cancel
+                    <button type="button" id="cancel-timetable-button" class="cancel-button">Cancel
 
                     </button>
 
-                    <button
-                        type="submit"
-                        class="primary-button"> Save Timetable
+                    <button type="submit" class="primary-button"> Save Timetable
 
                     </button>
                 </div>
@@ -319,4 +293,5 @@
     <script src="js/attendance.js"></script>
 
 </body>
+
 </html>

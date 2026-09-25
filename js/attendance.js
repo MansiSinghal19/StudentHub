@@ -46,6 +46,9 @@ const timetableRoom =
 const todayDateElement =
     document.getElementById("today-date");
 
+const attendanceDateInput =
+    document.getElementById("attendance-date");
+
 const todayAttendanceList =
     document.getElementById("today-attendance-list");
 
@@ -450,6 +453,22 @@ function getTodayDayName() {
     return dayNames[dayIndex];
 }
 
+function getDayNameFromDate(dateString) {
+    const [year, month, day] = dateString.split("-").map(Number);
+    const date = new Date(year, month - 1, day);
+
+    const dayNames = [
+        "Sunday",
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday"
+    ];
+
+    return dayNames[date.getDay()];
+}
 /* GET TODAY'S DATE */
 
 function getTodayDate() {
@@ -484,9 +503,11 @@ function renderTodayDate() {
 
 function renderTodayAttendance() {
     todayAttendanceList.innerHTML = "";
-    const todayDay = getTodayDayName();
 
-    const todayDate = getTodayDate();
+    const selectedDate = attendanceDateInput.value;
+    const todayDay = getDayNameFromDate(selectedDate);
+
+    // const todayDate = getTodayDate();
 
     const todayEntries = timetableRecords.filter(entry =>
         entry.day === todayDay
@@ -510,8 +531,7 @@ function renderTodayAttendance() {
     );
 
     todayEntries.forEach(entry => {
-        const recordId = `${todayDate}-${entry.id}`;
-
+        const recordId = `${selectedDate}-${entry.id}`;
         const existingRecord = attendanceRecords.find(record =>
             record.recordId === recordId
         );
@@ -562,6 +582,15 @@ function renderTodayAttendance() {
                     Absent
                 </button>
 
+                <button
+                    type="button"
+                    class="attendance-status-button no-class-button
+                    ${existingRecord && existingRecord.status === "No Class" ? "selected" : ""
+            }"
+                    data-status="No Class">
+                    No Class
+                </button>
+
             </div>
         `;
 
@@ -577,7 +606,7 @@ function renderTodayAttendance() {
 
                     markAttendance(
                         recordId,
-                        todayDate,
+                        selectedDate,
                         entry.course,
                         selectedStatus
                     );
@@ -626,10 +655,16 @@ function markAttendance(
 
 /* RENDER ATTENDANCE SUMMARY */
 
-function renderAttendanceSummary() {summaryList.innerHTML = "";
+function renderAttendanceSummary() {
+    summaryList.innerHTML = "";
     const courseSummary = {};
 
     attendanceRecords.forEach(record => {
+
+              if (record.status === "No Class") {
+              return;
+}
+
         if (
             !courseSummary[record.course]
         ) {
@@ -639,20 +674,20 @@ function renderAttendanceSummary() {summaryList.innerHTML = "";
                 absent: 0
             };
         }
-
+  
         courseSummary[record.course].total++;
 
         if (
             record.status === "Present"
         ) {
-            courseSummary[ record.course ].present++;
+            courseSummary[record.course].present++;
         }
 
         if (
             record.status === "Absent"
         ) {
 
-            courseSummary[ record.course ].absent++;
+            courseSummary[record.course].absent++;
         }
     });
 
@@ -671,8 +706,8 @@ function renderAttendanceSummary() {summaryList.innerHTML = "";
 
         const data = courseSummary[course];
 
-        const percentage =data.total === 0 ? 0: (
-                    data.present /data.total) * 100;
+        const percentage = data.total === 0 ? 0 : (
+            data.present / data.total) * 100;
 
         const summaryCard = document.createElement("div");
 
@@ -714,7 +749,16 @@ function renderAttendanceSummary() {summaryList.innerHTML = "";
 /* INITIAL PAGE LOAD */
 
 loadCoursesIntoDropdown();
+
 renderTimetable();
+
+attendanceDateInput.value = getTodayDate();
+
+attendanceDateInput.addEventListener("change", function () {
+    renderTodayDate();
+    renderTodayAttendance();
+});
+
 renderTodayDate();
 renderTodayAttendance();
 renderAttendanceSummary();
