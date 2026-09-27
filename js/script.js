@@ -57,6 +57,7 @@ function renderTasks() {
         return;
     }
 
+
     taskList.innerHTML = "";
 
 

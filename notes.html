@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Notes - StudentHub</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="app-container">
+
+        <aside class="sidebar">
+
+            <div class="logo">
+                <h2>StudentHub</h2>
+            </div>
+
+            <nav class="sidebar-nav">
+                <ul>
+                    <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                    <li><a href="tasks.html" class="nav-link">Tasks</a></li>
+                    <li><a href="courses.html" class="nav-link">Courses</a></li>
+                    <li><a href="attendance.html" class="nav-link">Attendance</a></li>
+                    <li><a href="note.html" class="nav-link active">Notes</a></li>
+                    <li><a href="#" class="nav-link">Analytics</a></li>
+                    <li><a href="#" class="nav-link">Calendar</a></li>
+                </ul>
+            </nav>
+
+        </aside>
+
+
+        <main class="main-content">
+
+            <header class="page-header">
+                <h1>Notes</h1>
+                <p>Keep your important notes organized in one place.</p>
+            </header>
+
+
+            <section class="notes-section">
+
+                <div class="notes-tabs">
+                    <button class="notes-tab active" id="subject-notes-tab">
+                        Subject Notes
+                    </button>
+
+                    <button class="notes-tab" id="personal-notes-tab">
+                        Personal Notes
+                    </button>
+                </div>
+
+
+                <div class="notes-toolbar">
+
+                    <input
+                        type="text"
+                        id="notes-search"
+                        placeholder="Search notes..."
+                    >
+
+                    <button id="add-note-button">
+                        + Add Note
+                    </button>
+
+                </div>
+
+
+                <div id="notes-container">
+
+                    <div class="empty-notes-message">
+                        <h3>No notes yet</h3>
+                        <p>Click "Add Note" to create your first note.</p>
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+</html>
