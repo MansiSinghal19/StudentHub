@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - StudentHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- TOP HEADER -->
+
+    <header class="top-header">
+        <div class="logo">
+            <h1>StudentHub</h1>
+            <p>
+                Student Productivity & Academic Management System
+            </p>
+        </div>
+        <div class="user-area">
+            <span>🔔</span>
+            <span>👤 Student</span>
+        </div>
+    </header>
+
+    <!-- APP LAYOUT -->
+
+    <div class="app-layout">
+
+        <!-- SIDEBAR -->
+
+        <nav class="sidebar">
+            <ul>
+                <li>
+                    <a href="index.html" class="nav-link">
+                        Dashboard
+                    </a>
+                </li>
+                <li>
+                    <a href="tasks.html" class="nav-link">
+                        Tasks
+                    </a>
+                </li>
+                <li>
+                    <a href="courses.html" class="nav-link">
+                        Courses
+                    </a>
+                </li>
+                <li>
+                    <a href="attendence.html" class="nav-link">
+                        Attendance
+                    </a>
+                </li>
+                <li>
+                    <a href="notes.html" class="nav-link">
+                        Notes
+                    </a>
+                </li>
+                <li>
+                    <a href="analytics.html" class="nav-link active">
+                        Analytics
+                    </a>
+                </li>
+                <li>
+                    <a href="calendar.html" class="nav-link">
+                        Calendar
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- ANALYTICS PAGE -->
+
+        <main class="dashboard analytics-dashboard">
+
+            <!-- PAGE HEADING -->
+            <section class="page-heading">
+                <h2>Analytics</h2>
+                <p>
+                    Track your academic progress and performance.
+                </p>
+            </section>
+
+            <!-- TASK ANALYTICS -->
+
+            <section class="analytics-section">
+                <div class="analytics-section-header">
+                    <h2>Task Analytics</h2>
+                    <p>
+                        Overview of your task completion progress.
+                    </p>
+                </div>
+
+                <div class="task-analytics-card">
+
+                    <!-- DONUT CHART -->
+                    <div class="task-chart-wrapper">
+                        <div class="analytics-donut task-donut" id="task-donut">
+
+                            <div class="donut-center">
+
+                                <span id="task-completion-percent" class="donut-percentage">0%
+                                </span>
+
+                                <span class="donut-label">
+                                    Completion
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- TASK LEGEND -->
+
+                    <div class="task-analytics-details">
+                        <div class="analytics-stat-row">
+                            <div class="analytics-stat-info">
+                                <span class="legend-dot completed-dot"></span>
+                                <span>
+                                    Completed
+                                </span>
+                            </div>
+                            <strong id="completed-tasks">0</strong>
+                        </div>
+
+                        <div class="analytics-stat-row">
+                            <div class="analytics-stat-info">
+                                <span class="legend-dot incomplete-dot"></span>
+                                <span>
+                                    Incomplete
+                                </span>
+                            </div>
+                            <strong id="pending-tasks">
+                                0
+                            </strong>
+
+                        </div>
+
+                        <div class="task-total-info">Total Tasks:
+                            <strong id="total-tasks">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- COURSE OVERVIEW -->
+
+            <section class="analytics-section">
+                <div class="analytics-section-header">
+                    <h2>Course Overview</h2>
+                    <p>Overview of your current academic courses.</p>
+                </div>
+
+                <div class="course-overview-grid">
+
+                    <!-- TOTAL COURSES -->
+
+                    <div class="overview-card">
+                        <div class="overview-card-icon">
+                            📚
+                        </div>
+                        <div>
+
+                            <span class="overview-card-label">
+                                Total Courses
+                            </span>
+
+                            <strong id="total-courses" class="overview-card-value"> 0
+                            </strong>
+                        </div>
+                    </div>
+
+                    <!-- CURRENT SEMESTER -->
+
+                    <div class="overview-card">
+                        <div class="overview-card-icon">🎓</div>
+
+                        <div>
+                            <span class="overview-card-label">
+                                Current Semester
+                            </span>
+
+                            <strong id="total-semesters" class="overview-card-value">0
+                            </strong>
+                        </div>
+                    </div>
+
+                    <!-- INSTRUCTORS -->
+
+                    <div class="overview-card">
+
+                        <div class="overview-card-icon">
+                            👨‍🏫
+                        </div>
+
+                        <div>
+
+                            <span class="overview-card-label">
+                                Instructors
+                            </span>
+
+                            <strong id="total-instructors" class="overview-card-value">
+                                0
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+            <!-- ATTENDANCE ANALYTICS -->
+
+            <section class="analytics-section">
+
+                <div class="analytics-section-header">
+
+                    <h2>Attendance Analytics</h2>
+
+                    <p>
+                        Course-wise attendance performance.
+                    </p>
+
+                </div>
+
+                <div id="course-attendance-container" class="attendance-analytics-grid">
+
+                    <!-- Attendance circles will be created by JavaScript -->
+
+                </div>
+
+            </section>
+
+            <!-- NOTES ANALYTICS -->
+
+            <section class="analytics-section">
+
+                <div class="analytics-section-header">
+
+                    <h2>Notes Analytics</h2>
+
+                    <p>
+                        Overview of your saved notes.
+                    </p>
+
+                </div>
+
+                <div class="notes-analytics-card">
+
+                    <!-- TOTAL NOTES -->
+
+                    <div class="total-notes-card">
+
+                        <span class="notes-card-label">
+                            Total Notes
+                        </span>
+
+                        <strong id="total-notes" class="total-notes-number">
+                            0
+                        </strong>
+
+                    </div>
+
+                    <!-- SUBJECT VS PERSONAL -->
+
+                    <div class="notes-chart-area">
+
+                        <div class="analytics-donut notes-donut" id="notes-donut">
+
+                            <div class="donut-center">
+
+                                <span id="notes-total-center" class="donut-percentage">
+                                    0
+                                </span>
+
+                                <span class="donut-label">
+                                    Notes
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="notes-legend">
+
+                            <div class="notes-legend-row">
+
+                                <div class="analytics-stat-info">
+
+                                    <span class="legend-dot subject-dot"></span>
+
+                                    <span>
+                                        Subject
+                                    </span>
+
+                                </div>
+
+                                <strong id="subject-notes">
+                                    0
+                                </strong>
+
+                            </div>
+
+                            <div class="notes-legend-row">
+
+                                <div class="analytics-stat-info">
+
+                                    <span class="legend-dot personal-dot"></span>
+
+                                    <span>
+                                        Personal
+                                    </span>
+
+                                </div>
+
+                                <strong id="personal-notes">
+                                    0
+                                </strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/courses.js"></script>
+    <script src="js/analytics.js"></script>
+
+</body>
+
+</html>
