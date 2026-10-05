@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendar - StudentHub</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <header class="top-header">
+        <div class="logo">
+            <h1>StudentHub</h1>
+            <p>Student Productivity & Academic Management System</p>
+        </div>
+    </header>
+
+    <div class="app-layout">
+
+        <aside class="sidebar">
+            <ul>
+                <li><a href="index.html" class="nav-link">Dashboard</a></li>
+                <li><a href="tasks.html" class="nav-link">Tasks</a></li>
+                <li><a href="courses.html" class="nav-link">Courses</a></li>
+                <li><a href="attendance.html" class="nav-link">Attendance</a></li>
+                <li><a href="notes.html" class="nav-link">Notes</a></li>
+                <li><a href="analytics.html" class="nav-link">Analytics</a></li>
+                <li><a href="calendar.html" class="nav-link active">Calendar</a></li>
+            </ul>
+        </aside>
+
+        <main class="dashboard">
+
+            <div class="page-heading">
+                <h1>Calendar</h1>
+                <p>Remember important dates and upcoming events.</p>
+            </div>
+
+            <section class="calendar-section">
+
+                <div class="calendar-card">
+
+                    <div class="calendar-header">
+                        <button type="button" id="previous-month" class="calendar-nav-button">‹</button>
+
+                        <h2 id="calendar-month-year"></h2>
+
+                        <button type="button" id="next-month" class="calendar-nav-button">›</button>
+                    </div>
+
+                    <div class="calendar-today-container">
+                        <button type="button" id="today-button" class="calendar-today-button">Today</button>
+                    </div>
+
+                    <div class="calendar-weekdays">
+                        <div>Sun</div>
+                        <div>Mon</div>
+                        <div>Tue</div>
+                        <div>Wed</div>
+                        <div>Thu</div>
+                        <div>Fri</div>
+                        <div>Sat</div>
+                    </div>
+
+                    <div id="calendar-grid" class="calendar-grid"></div>
+
+                </div>
+
+                <div class="upcoming-events-card">
+
+                    <div class="calendar-section-heading">
+                        <h2>Upcoming Events</h2>
+                        <p>Important events coming up.</p>
+                    </div>
+
+                    <div id="upcoming-events-list" class="upcoming-events-list"></div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- Add/Edit Event Modal -->
+
+    <div id="event-modal" class="calendar-modal">
+
+        <div class="calendar-modal-content">
+
+            <div class="calendar-modal-header">
+                <h2 id="event-modal-title">Add Event</h2>
+
+                <button type="button" id="close-event-modal" class="calendar-close-button">×</button>
+            </div>
+
+            <form id="event-form">
+
+                <label for="event-title">Event Title</label>
+                <input type="text" id="event-title" placeholder="e.g. Friend's Birthday" required>
+
+                <label for="event-description">Description</label>
+                <textarea id="event-description" placeholder="Add a short description" rows="3"></textarea>
+
+                <label for="event-date">Date</label>
+                <input type="date" id="event-date" required>
+
+                <label for="event-reminder">Reminder</label>
+
+                <select id="event-reminder">
+                    <option value="0">On the event day</option>
+                    <option value="1" selected>1 day before</option>
+                    <option value="2">2 days before</option>
+                    <option value="7">1 week before</option>
+                </select>
+
+                <div class="calendar-modal-actions">
+                    <button type="button" id="cancel-event-button">Cancel</button>
+                    <button type="submit">Save Event</button>
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <!-- Selected Date Events Modal -->
+
+    <div id="date-events-modal" class="calendar-modal">
+
+        <div class="calendar-modal-content">
+
+            <div class="calendar-modal-header">
+                <h2 id="selected-date-title">Events</h2>
+
+                <button type="button" id="close-date-events-modal" class="calendar-close-button">×</button>
+            </div>
+
+            <div id="selected-date-events" class="selected-date-events"></div>
+
+            <button type="button" id="add-event-for-date" class="calendar-primary-button">
+                + Add Event
+            </button>
+
+        </div>
+
+    </div>
+
+    <script src="js/calendar.js"></script>
+
+</body>
+
+</html>
